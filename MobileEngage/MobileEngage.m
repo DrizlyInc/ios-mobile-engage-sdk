@@ -29,6 +29,11 @@ static MobileEngageInternal *_mobileEngageInternal;
     [_mobileEngageInternal setPushToken:deviceToken];
 }
 
++ (void)setStringToken:(NSString*)pushToken{
+    [_mobileEngageInternal setStringToken:pushToken];
+}
+
+
 + (NSString *)appLogin {
     return [_mobileEngageInternal appLogin];
 }

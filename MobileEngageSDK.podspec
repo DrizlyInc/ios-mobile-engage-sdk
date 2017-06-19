@@ -14,6 +14,6 @@ Pod::Spec.new do |spec|
 		'MobileEngage/MEConfigBuilder.h',
 		'MobileEngage/MEConfig.h',
 	]
-	spec.dependency 'CoreSDK'
+    spec.dependency 'CoreSDK', '~>0.5.1'
 	spec.libraries = 'z', 'c++'
 end

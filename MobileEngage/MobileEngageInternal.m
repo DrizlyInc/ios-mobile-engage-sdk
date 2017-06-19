@@ -82,6 +82,25 @@ typedef void (^MEErrorBlock)(NSString *requestId, NSError *error);
     return [self appLoginWithContactFieldId:nil contactFieldValue:nil];
 }
 
+- (NSString*)stringToken{
+    if(self.pushToken){
+        return [self.pushToken deviceTokenString];
+    }else{
+        return _stringToken;
+    }
+    return nil;
+}
+
+-(id)tokenPayload{
+    id payload;
+    if([self.stringToken isEqualToString:@"FALSE"]){
+        payload = @NO;
+    }else{
+        payload = self.stringToken;
+    }
+    return payload;
+}
+
 - (NSString *)appLoginWithContactFieldId:(NSNumber *)contactFieldId
                        contactFieldValue:(NSString *)contactFieldValue {
     EMSRequestModel *requestModel = [EMSRequestModel makeWithBuilder:^(EMSRequestModelBuilder *builder) {
@@ -101,11 +120,11 @@ typedef void (^MEErrorBlock)(NSString *requestId, NSError *error);
         if (appVersion) {
             payload[@"application_version"] = appVersion;
         }
-        if (self.pushToken) {
-            payload[@"push_token"] = [self.pushToken deviceTokenString];
-        } else {
-            payload[@"push_token"] = @NO;
+        
+        if([self tokenPayload] != nil){
+            payload[@"push_token"] = [self tokenPayload];
         }
+        
         if (contactFieldId && contactFieldValue) {
             payload[@"contact_field_id"] = contactFieldId;
             payload[@"contact_field_value"] = contactFieldValue;
