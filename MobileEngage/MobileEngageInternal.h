@@ -30,11 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) MEErrorBlock errorBlock;
 
 @property(nonatomic, weak, nullable) id <MobileEngageStatusDelegate> statusDelegate;
-@property(nonatomic, strong) NSData *pushToken;
+@property(nonatomic, strong, nullable) NSData *pushToken;
 @property(nonatomic, strong, nullable) MENotificationCenterManager *notificationCenterManager;
 @property(nonatomic, strong) MERequestContext *requestContext;
-@property(nonatomic, strong) NSString* stringToken;
-@property(nonatomic, strong, nullable) MEAppLoginParameters *lastAppLoginParameters;
 
 - (BOOL)trackDeepLinkWith:(NSUserActivity *)userActivity
             sourceHandler:(nullable MESourceHandler)sourceHandler;

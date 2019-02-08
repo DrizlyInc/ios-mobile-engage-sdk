@@ -14,7 +14,7 @@
 
 @implementation MERequestFactory
 
-+ (EMSRequestModel *)createLoginOrLastMobileActivityRequestWithPushToken:(NSData *)pushToken
++ (EMSRequestModel *)createLoginOrLastMobileActivityRequestWithPushToken:(nullable NSData *)pushToken
                                                           requestContext:(MERequestContext *)requestContext {
     EMSRequestModel *requestModel = [self createAppLoginRequestWithPushToken:pushToken
                                                               requestContext:requestContext];
@@ -42,7 +42,7 @@
         ([MEExperimental isFeatureEnabled:INAPP_MESSAGING] && [requestContext.lastAppLoginPayload isEqual:currentAppLoginPayload] && requestContext.meId);
 }
 
-+ (EMSRequestModel *)createAppLoginRequestWithPushToken:(NSData *)pushToken requestContext:(MERequestContext *)requestContext {
++ (EMSRequestModel *)createAppLoginRequestWithPushToken:(nullable NSData *)pushToken requestContext:(MERequestContext *)requestContext {
     return [self requestModelWithUrl:@"https://push.eservice.emarsys.net/api/mobileengage/v2/users/login"
                               method:HTTPMethodPOST
               additionalPayloadBlock:^(NSMutableDictionary *payload) {

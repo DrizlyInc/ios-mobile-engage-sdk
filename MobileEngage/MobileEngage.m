@@ -82,7 +82,7 @@ static EMSSQLiteHelper *_dbHelper;
                                   launchOptions:launchOptions];
 }
 
-+ (void)setPushToken:(NSData *)deviceToken {
++ (void)setPushToken:(nullable NSData *)deviceToken {
     [_mobileEngageInternal setPushToken:deviceToken];
 }
 
@@ -90,10 +90,6 @@ static EMSSQLiteHelper *_dbHelper;
             sourceHandler:(nullable MESourceHandler)sourceHandler {
     return [_mobileEngageInternal trackDeepLinkWith:userActivity
                                       sourceHandler:sourceHandler];
-}
-
-+ (void)setStringToken:(NSString*)pushToken{
-    [_mobileEngageInternal setStringToken:pushToken];
 }
 
 + (NSString *)appLogin {
@@ -138,7 +134,6 @@ static EMSSQLiteHelper *_dbHelper;
     return [_mobileEngageInternal statusDelegate];
 }
 
-<<<<<<< HEAD
 + (id <MEInboxProtocol>)inbox {
     return _inbox;
 }
@@ -163,6 +158,4 @@ static EMSSQLiteHelper *_dbHelper;
     _dbHelper = dbHelper;
 }
 
-=======
->>>>>>> driz_master
 @end

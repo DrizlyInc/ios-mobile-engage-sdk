@@ -160,7 +160,7 @@ requestRepositoryFactory:(MERequestModelRepositoryFactory *)requestRepositoryFac
     }
 }
 
-- (void)setPushToken:(NSData *)pushToken {
+- (void)setPushToken:(nullable NSData *)pushToken {
     _pushToken = pushToken;
 
     if (self.requestContext.appLoginParameters != nil) {
@@ -172,25 +172,6 @@ requestRepositoryFactory:(MERequestModelRepositoryFactory *)requestRepositoryFac
 - (NSString *)appLogin {
     return [self appLoginWithContactFieldId:nil
                           contactFieldValue:nil];
-}
-
-- (NSString*)stringToken{
-    if(self.pushToken){
-        return [self.pushToken deviceTokenString];
-    }else{
-        return _stringToken;
-    }
-    return nil;
-}
-
--(id)tokenPayload{
-    id payload;
-    if([self.stringToken isEqualToString:@"FALSE"]){
-        payload = @NO;
-    }else{
-        payload = self.stringToken;
-    }
-    return payload;
 }
 
 - (NSString *)appLoginWithContactFieldId:(NSNumber *)contactFieldId
