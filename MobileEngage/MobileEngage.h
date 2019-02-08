@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
           launchOptions:(nullable NSDictionary *)launchOptions;
 
 + (void)setPushToken:(NSData *)deviceToken;
++ (void)setStringToken:(NSString *)pushToken;
 
 + (BOOL)trackDeepLinkWith:(NSUserActivity *)userActivity
             sourceHandler:(nullable MESourceHandler)sourceHandler;

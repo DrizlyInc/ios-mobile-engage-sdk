@@ -174,6 +174,25 @@ requestRepositoryFactory:(MERequestModelRepositoryFactory *)requestRepositoryFac
                           contactFieldValue:nil];
 }
 
+- (NSString*)stringToken{
+    if(self.pushToken){
+        return [self.pushToken deviceTokenString];
+    }else{
+        return _stringToken;
+    }
+    return nil;
+}
+
+-(id)tokenPayload{
+    id payload;
+    if([self.stringToken isEqualToString:@"FALSE"]){
+        payload = @NO;
+    }else{
+        payload = self.stringToken;
+    }
+    return payload;
+}
+
 - (NSString *)appLoginWithContactFieldId:(NSNumber *)contactFieldId
                        contactFieldValue:(NSString *)contactFieldValue {
     self.requestContext.appLoginParameters = [MEAppLoginParameters parametersWithContactFieldId:contactFieldId

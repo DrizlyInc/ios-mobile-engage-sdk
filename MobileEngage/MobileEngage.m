@@ -92,6 +92,10 @@ static EMSSQLiteHelper *_dbHelper;
                                       sourceHandler:sourceHandler];
 }
 
++ (void)setStringToken:(NSString*)pushToken{
+    [_mobileEngageInternal setStringToken:pushToken];
+}
+
 + (NSString *)appLogin {
     return [_mobileEngageInternal appLogin];
 }
@@ -134,6 +138,7 @@ static EMSSQLiteHelper *_dbHelper;
     return [_mobileEngageInternal statusDelegate];
 }
 
+<<<<<<< HEAD
 + (id <MEInboxProtocol>)inbox {
     return _inbox;
 }
@@ -158,4 +163,6 @@ static EMSSQLiteHelper *_dbHelper;
     _dbHelper = dbHelper;
 }
 
+=======
+>>>>>>> driz_master
 @end
